@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌭 Sausage Party - Not Your Kid's Animation 🌭</title>
+    <style>
+        @keyframes wobble {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        :root {
+            --primary-color: #ff4242;
+            --secondary-color: #ffd000;
+            cursor: url('/api/placeholder/32/32'), auto;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: repeating-linear-gradient(
+                45deg,
+                #fff,
+                #fff 10px,
+                #f9f9f9 10px,
+                #f9f9f9 20px
+            );
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "🌭";
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: wobble 3s infinite;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            text-shadow: 3px 3px 0 var(--primary-color);
+            animation: bounce 2s infinite;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--primary-color);
+            padding: 1rem;
+            border-radius: 20px;
+            transform: rotate(-2deg);
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 3px solid var(--primary-color);
+        }
+
+        .warning-label {
+            background: #ff4242;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            transform: rotate(-2deg);
+            margin-bottom: 2rem;
+        }
+
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .cast-member {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transform: rotate(2deg);
+            transition: transform 0.3s;
+            border: 2px dashed var(--primary-color);
+        }
+
+        .cast-member:hover {
+            transform: rotate(-2deg) scale(1.05);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            transform: rotate(-1deg);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: rotate(1deg) scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        .reviews {
+            background: #f8f9fa;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
+            transform: rotate(1deg);
+            border: 2px solid var(--secondary-color);
+        }
+
+        .rating {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        .food-disclaimer {
+            font-size: 0.8rem;
+            font-style: italic;
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .emoji-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .emoji-rain::before {
+            content: "🌭 🌮 🍔 🥨 🥪";
+            position: absolute;
+            font-size: 20px;
+            animation: rain 20s linear infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes rain {
+            0% { transform: translateY(-100%) translateX(-100%) rotate(0deg); }
+            100% { transform: translateY(100%) translateX(100%) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="emoji-rain"></div>
+    
+    <section class="hero">
+        <h1>🌭 SAUSAGE PARTY 🌭</h1>
+        <p>WARNING: This ain't your mama's grocery shopping trip! The first R-rated food fight that will ruin your appetite... forever.</p>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="warning-label">
+                ⚠️ PARENTAL ADVISORY: Contains excessive food puns, existential crises, and grocery store philosophy ⚠️
+            </div>
+            
+            <h2>What Fresh Hell Is This?</h2>
+            <p>Ever wondered what your food thinks about when you're not looking? NO? TOO BAD! Sausage Party follows Frank (yes, he's a frank) on an absolutely bonkers journey through the supermarket aisles of enlightenment. It's like Toy Story had a baby with South Park in the produce section.</p>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">$140M+</div>
+                    <div>Worth of Therapy Bills for Traumatized Grocers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">83%</div>
+                    <div>of Critics Lost Their Appetite</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2016</div>
+                    <div>Year Grocery Shopping Changed Forever</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>The Culinary Culprits</h2>
+            <div class="cast-grid">
+                <div class="cast-member">
+                    <h3>Seth Rogen</h3>
+                    <p>as Frank (The Hot Dog with Existential Questions)</p>
+                </div>
+                <div class="cast-member">
+                    <h3>Kristen Wiig</h3>
+                    <p>as Brenda (The Bun Looking for Her Wiener)</p>
+                </div>
+                <div class="cast-member">
+                    <h3>Jonah Hill</h3>
+                    <p>as Carl (The Sausage with Self-Esteem Issues)</p>
+                </div>
+                <div class="cast-member">
+                    <h3>Bill Hader</h3>
+                    <p>as Firewater (The Non-PC Bottle of Booze)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section reviews">
+        <div class="container">
+            <h2>What The Critics Couldn't Un-See</h2>
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="rating">🌭🌭🌭🌭</div>
+                    <p>"Like getting food poisoning from a Michelin star restaurant - horrifying yet impressive."</p>
+                    <cite>- Rolling Stone (probably)</cite>
+                </div>
+                <div class="review-card">
+                    <div class="rating">🌭🌭🌭🌭</div>
+                    <p>"Made me vegetarian for a week. Then I relapsed with a hot dog."</p>
+                    <cite>- Empire Magazine (we think)</cite>
+                </div>
+                <div class="review-card">
+                    <div class="rating">🌭🌭🌭🌭🌭</div>
+                    <p>"Never thought I'd empathize with a talking sausage. Yet here we are."</p>
+                    <cite>- Some Traumatized Critic</cite>
+                </div>
+            </div>
+            
+            <div class="food-disclaimer">
+                * No actual food was harmed in the making of this film. However, several animators are now in therapy.
+            </div>
+        </div>
+    </section>
+</body>
+</html>
